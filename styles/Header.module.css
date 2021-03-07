@@ -1,0 +1,17 @@
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 32px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.copy {
+  color: #f0f0f0;
+  margin: 0;
+}
