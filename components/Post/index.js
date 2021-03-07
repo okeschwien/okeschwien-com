@@ -1,4 +1,11 @@
-import { post } from '../../styles/Post.module.css'
+import {
+  container,
+  asset,
+  caption,
+  text,
+  textBig,
+  textSmall,
+} from '../../styles/Post.module.css'
 
 const Post = ({
   post: {
@@ -8,7 +15,16 @@ const Post = ({
       },
     },
     title,
+    identifier,
   },
-}) => <img alt={title} src={`https:${url}`} className={post} />
+}) => (
+  <div className={container}>
+    <div className={caption}>
+      <p className={`${text} ${textBig}`}>{title}</p>
+      <p className={`${text} ${textSmall}`}>{identifier}</p>
+    </div>
+    <img alt={title} src={`https:${url}`} className={asset} />
+  </div>
+)
 
 export default Post

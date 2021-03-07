@@ -1,8 +1,11 @@
-import { header, copy } from '../../styles/Header.module.css'
+import { container, textBig, textSmall } from '../../styles/Header.module.css'
 
-const Header = ({ headline }) => (
-  <div className={header}>
-    <h1 className={copy}>{headline}</h1>
+const Header = ({ headline, subline }) => (
+  <div className={container}>
+    <div>
+      <h1 className={textBig}>{headline}</h1>
+      <p className={textSmall}>{subline}</p>
+    </div>
   </div>
 )
 

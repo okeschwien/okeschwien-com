@@ -13,11 +13,11 @@ export default function Home({ posts }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <Header headline='hi, my name is oke' />
+      <Header headline='Hi, my name is Oke' subline='This is my portfolio' />
 
       <div>
-        {posts.map((post, index) => (
-          <Post key={`${post.timestamp}-${index}`} post={post} />
+        {posts.map((post) => (
+          <Post key={post.identifier} post={post} />
         ))}
       </div>
     </div>

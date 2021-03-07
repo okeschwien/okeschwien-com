@@ -1,7 +1,55 @@
-.post {
-  width: 100vw;
-  height: auto;
+.container {
+  position: relative;
+}
+
+.asset {
+  width: 100%;
   height: auto;
   object-fit: cover;
   display: block;
+}
+
+.caption {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+}
+
+.text {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  text-align: start;
+  margin: 0;
+}
+
+.textBig {
+  font-size: 20px;
+}
+
+.textSmall {
+  font-size: 14px;
+}
+
+@media only screen and (min-width: 768px) {
+  .caption {
+    opacity: 0;
+  }
+
+  .container:hover > .caption {
+    opacity: 100;
+    transition: opacity 0.4s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  .textBig {
+    font-size: 24px;
+  }
+
+  .textSmall {
+    font-size: 16px;
+  }
+
+  .caption {
+    bottom: 32px;
+    left: 32px;
+  }
 }
