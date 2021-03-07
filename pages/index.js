@@ -24,7 +24,7 @@ export default function Home({ posts }) {
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   const res = await fetchPosts()
   const posts = await res.map((p) => {
     return p.fields
