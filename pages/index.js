@@ -1,28 +1,21 @@
-import Head from 'next/head'
-import { container } from '../styles/Main.module.css'
-
+import Page from '../components/Page'
 import fetchPosts from '../utils/fetchPosts'
 import Post from '../components/Post'
-import Header from '../components/Header'
+import Grid from '../components/Grid'
+import FeaturedPost from '../components/FeaturedPost'
 
-export default function Home({ posts }) {
-  return (
-    <div className={container}>
-      <Head>
-        <title>okeschwien.com</title>
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-
-      <Header headline='Hi, my name is Oke' subline='This is my portfolio' />
-
-      <div>
-        {posts.map((post) => (
-          <Post key={post.identifier} post={post} />
-        ))}
-      </div>
-    </div>
-  )
-}
+const Home = ({ featuredPost, posts }) => (
+  <Page subline='Portfolio'>
+    <FeaturedPost>
+      <Post post={featuredPost} />
+    </FeaturedPost>
+    <Grid>
+      {posts.map((post) => (
+        <Post key={post.identifier} post={post} />
+      ))}
+    </Grid>
+  </Page>
+)
 
 export const getStaticProps = async () => {
   const res = await fetchPosts()
@@ -32,7 +25,10 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      posts,
+      featuredPost: posts.filter((post) => post.featured)[0],
+      posts: posts.filter((post) => !post.featured),
     },
   }
 }
+
+export default Home

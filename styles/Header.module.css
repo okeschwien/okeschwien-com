@@ -1,36 +1,35 @@
 .container {
-  width: calc(100% - 16px);
-  padding: 16px;
-
-  margin: 8px;
+  width: 100%;
+  padding: 32px;
   text-align: center;
 }
 
-.textBig {
+.text {
   color: rgba(0, 0, 0, 0.7);
-  font-size: 26px;
-  font-weight: 700;
   margin: 0;
 }
 
+.textBig {
+  font-size: 32px;
+  font-weight: 700;
+}
+
 .textSmall {
-  color: rgba(0, 0, 0, 0.7);
   font-weight: 300;
   font-size: 18px;
-  margin: 0;
 }
 
 @media only screen and (min-width: 768px) {
   .container {
+    padding: 40px;
     text-align: start;
   }
 
   .textBig {
-    font-size: 32px;
+    font-size: 40px;
   }
 
   .textSmall {
     font-size: 20px;
-    margin: 0 0 4px 0;
   }
 }
