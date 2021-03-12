@@ -1,0 +1,37 @@
+.container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.container > img {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: cover;
+}
+
+.caption {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 16px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    padding: 24px;
+  }
+
+  .container > img {
+    max-width: 1200px;
+  }
+}

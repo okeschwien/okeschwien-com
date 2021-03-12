@@ -17,8 +17,9 @@ const Post = ({
     title,
     identifier,
   },
+  onClick,
 }) => (
-  <div className={container}>
+  <div className={container} onClick={onClick(identifier)}>
     <div className={caption}>
       <p className={`${text} ${textBig}`}>{title}</p>
       <p className={`${text} ${textSmall}`}>{identifier}</p>
