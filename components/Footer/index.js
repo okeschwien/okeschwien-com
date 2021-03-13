@@ -14,7 +14,7 @@ const Footer = () => (
     {/* <Link url={URL_IMPRINT}>Imprint</Link> */}
     <div className={copy}>
       <p className={`${text} ${textSmall}`}>{new Date().getFullYear()}</p>
-      <p className={`${text} ${textSmall}`}>Hamburg</p>
+      <p className={`${text} ${textSmall}`}>Hamburg, Germany</p>
     </div>
   </div>
 )

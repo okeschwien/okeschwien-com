@@ -5,6 +5,12 @@
 
 @media only screen and (min-width: 768px) {
   .container > * {
-    height: 286px;
+    height: 340px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .container > * {
+    height: 400px;
   }
 }

@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from 'react'
+import { useCallback, useState, useMemo } from 'react'
 
 import Page from '../components/Page'
 import fetchPosts from '../utils/fetchPosts'
@@ -8,7 +8,10 @@ import FeaturedPost from '../components/FeaturedPost'
 import Lightbox from '../components/Lightbox'
 
 const Home = ({ featuredPost, posts }) => {
-  const allPosts = [...[featuredPost], ...posts]
+  const allPosts = useMemo(() => [...[featuredPost], ...posts], [
+    featuredPost,
+    posts,
+  ])
   const [lightboxSelectedPost, setLightboxSelectedPost] = useState(undefined)
 
   const handleCloseLightbox = useCallback(() => {
@@ -23,10 +26,6 @@ const Home = ({ featuredPost, posts }) => {
     },
     [setLightboxSelectedPost, posts, featuredPost]
   )
-
-  // useEffect(() => {
-  //   console.log('SELECTED POST', lightboxSelectedPost)
-  // }, [lightboxSelectedPost])
 
   const selectNextPost = useCallback(() => {
     if (!lightboxSelectedPost) {
@@ -78,56 +77,28 @@ const Home = ({ featuredPost, posts }) => {
     [selectPreviousPost, selectNextPost]
   )
 
-  // const keydownListener = useCallback(
-  //   (event) => {
-  //     console.log(event.keyCode)
-
-  //     // keys: arrowRight = 39, space = 32, enter = 13, arrowUp = 38
-  //     if ([39, 32, 13, 38].includes(event.keyCode)) {
-  //       event.preventDefault()
-  //       event.stopPropagation()
-  //       selectNextPost()
-  //     }
-
-  //     //keys: arrowLeft = 37, arrowDown = 40
-  //     if ([37, 40].includes(event.keyCode)) {
-  //       event.preventDefault()
-  //       event.stopPropagation()
-  //       selectPreviousPost()
-  //     }
-  //   },
-  //   [
-  //     lightboxSelectedPost,
-  //     handleNextOrPreviousPost,
-  //     selectPreviousPost,
-  //     selectNextPost,
-  //   ]
-  // )
-
-  // useEffect(() => {
-  //   document.addEventListener('keydown', keydownListener)
-
-  //   return () => {
-  //     document.removeEventListener('keydown', keydownListener)
-  //   }
-  // }, [])
-
   return (
-    <Page subline='Portfolio'>
-      <FeaturedPost>
-        <Post post={featuredPost} onClick={handleSelectPost} />
-      </FeaturedPost>
-      <Grid>
-        {posts.map((post) => (
-          <Post key={post.identifier} post={post} onClick={handleSelectPost} />
-        ))}
-      </Grid>
+    <>
+      <Page subline='Portfolio'>
+        <FeaturedPost>
+          <Post post={featuredPost} onClick={handleSelectPost} />
+        </FeaturedPost>
+        <Grid>
+          {posts.map((post) => (
+            <Post
+              key={post.identifier}
+              post={post}
+              onClick={handleSelectPost}
+            />
+          ))}
+        </Grid>
+      </Page>
       <Lightbox
         selectedPost={lightboxSelectedPost}
         onClose={handleCloseLightbox}
         onNextOrPrevious={handleNextOrPreviousPost}
       />
-    </Page>
+    </>
   )
 }
 
