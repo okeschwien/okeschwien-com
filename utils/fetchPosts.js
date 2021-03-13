@@ -16,8 +16,6 @@ const fetchEntries = async () => {
       throw new Error(`Error getting Entries for ${contentType.name}.`)
     }
 
-    console.log()
-
     return items
   } catch (error) {
     console.log(error)

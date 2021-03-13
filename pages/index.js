@@ -6,6 +6,7 @@ import Post from '../components/Post'
 import Grid from '../components/Grid'
 import FeaturedPost from '../components/FeaturedPost'
 import Lightbox from '../components/Lightbox'
+import useKeypress from '../hooks/useKeypress'
 
 const Home = ({ featuredPost, posts }) => {
   const allPosts = useMemo(() => [...[featuredPost], ...posts], [
@@ -24,7 +25,7 @@ const Home = ({ featuredPost, posts }) => {
         allPosts.filter((post) => post.identifier === identifier)[0]
       )
     },
-    [setLightboxSelectedPost, posts, featuredPost]
+    [setLightboxSelectedPost, allPosts]
   )
 
   const selectNextPost = useCallback(() => {
@@ -37,13 +38,7 @@ const Home = ({ featuredPost, posts }) => {
     setLightboxSelectedPost(
       allPosts[selectedIndex === allPosts.length - 1 ? 0 : selectedIndex + 1]
     )
-  }, [
-    setLightboxSelectedPost,
-    posts,
-    featuredPost,
-    lightboxSelectedPost,
-    allPosts,
-  ])
+  }, [setLightboxSelectedPost, lightboxSelectedPost, allPosts])
 
   const selectPreviousPost = useCallback(() => {
     if (!lightboxSelectedPost) {
@@ -55,13 +50,7 @@ const Home = ({ featuredPost, posts }) => {
     setLightboxSelectedPost(
       allPosts[selectedIndex === 0 ? allPosts.length - 1 : selectedIndex - 1]
     )
-  }, [
-    setLightboxSelectedPost,
-    posts,
-    featuredPost,
-    lightboxSelectedPost,
-    allPosts,
-  ])
+  }, [setLightboxSelectedPost, lightboxSelectedPost, allPosts])
 
   const handleNextOrPreviousPost = useCallback(
     (direction) => (event) => {
@@ -76,6 +65,12 @@ const Home = ({ featuredPost, posts }) => {
     },
     [selectPreviousPost, selectNextPost]
   )
+
+  useKeypress([
+    { keys: ['Escape', 'Enter'], action: handleCloseLightbox },
+    { keys: ['ArrowRight'], action: selectNextPost },
+    { keys: ['ArrowLeft'], action: selectPreviousPost },
+  ])
 
   return (
     <>
