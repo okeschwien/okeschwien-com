@@ -79,7 +79,10 @@ const Home = ({ featuredPost, posts }) => {
 
   return (
     <>
-      <Page subline='Portfolio'>
+      <Page
+        subline='Portfolio'
+        imageUrl={featuredPost.assetImage.fields.file.url}
+      >
         <FeaturedPost>
           <Post post={featuredPost} onClick={handleSelectPost} />
         </FeaturedPost>
