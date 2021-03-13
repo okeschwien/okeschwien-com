@@ -13,7 +13,6 @@ const Page = ({ children, subline, imageUrl }) => (
 
       <meta name='title' content='okeschwien.com' />
       <meta name='description' content='Portfolio' />
-      <meta name='viewport' content='initial-scale=1.0, user-scalable=no' />
 
       <meta property='og:type' content='website' />
       <meta property='og:url' content='https://okeschwien.com/' />
