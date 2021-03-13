@@ -68,8 +68,8 @@ const Home = ({ featuredPost, posts }) => {
 
   useKeypress([
     { keys: ['Escape', 'Enter'], action: handleCloseLightbox },
-    { keys: ['ArrowRight'], action: selectNextPost },
-    { keys: ['ArrowLeft'], action: selectPreviousPost },
+    { keys: ['ArrowRight', 'd'], action: selectNextPost },
+    { keys: ['ArrowLeft', 'a'], action: selectPreviousPost },
   ])
 
   return (
